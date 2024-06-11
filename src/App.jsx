@@ -1,10 +1,16 @@
-import { useState } from 'react'
-import './App.css'
+import './App.css';
+import Header from './components/Header';
+import MovieCard from './components/MovieCard';
 
-const App = () => {
-  <div className="App">
-    
-  </div>
+function App() {
+  return (
+    <div className="App">
+      <Header></Header>
+      <MovieCard movieTitle="Grown Ups" rating="5.0" movieArt="./imgs/grownUps.jpg"></MovieCard>
+      <button>Load More</button>
+    </div>
+
+  );
 }
 
-export default App
+export default App;
