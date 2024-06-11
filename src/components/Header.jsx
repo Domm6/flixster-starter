@@ -10,7 +10,10 @@ function Header() {
             </form>
             <h1>Flixster</h1>
             <form action="">
-                <select name="header-sort" id="">Sort by</select>
+                <label for="movies">Sort by:</label>
+                <select name="header-sort" id="">
+
+                </select>
             </form>
 
         </div>

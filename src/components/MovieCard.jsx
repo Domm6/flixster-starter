@@ -7,7 +7,7 @@ function MovieCard (props) {
             <div>
                 <div className="movie-card-text">
                     <h3>{props.movieTitle}</h3>
-                    <p>{props.rating}</p>
+                    <p>Rating: {props.rating}</p>
                 </div>
             </div>
         </div>
