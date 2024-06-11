@@ -1,0 +1,15 @@
+
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    margin: 15px;
+    padding: 10px;
+    background-color: grey;
+}
+
+.header-form {
+    display: flex;
+    height: 75%;
+}
+
