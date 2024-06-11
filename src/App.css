@@ -1,3 +1,8 @@
+.movie-cards {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 button {
   display: flex;
   justify-content: center;

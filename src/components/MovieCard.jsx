@@ -2,11 +2,13 @@ import "./MovieCard.css"
 
 function MovieCard (props) {
     return (
-        <div>
-            <img src={props.moveArt} alt="" />
+        <div className="movie-card">
+            <img src={props.movieArt} alt="" className="movie-img"/>
             <div>
-                <h3>{props.movieTitle}</h3>
-                <p>{props.rating}</p>
+                <div className="movie-card-text">
+                    <h3>{props.movieTitle}</h3>
+                    <p>{props.rating}</p>
+                </div>
             </div>
         </div>
 
