@@ -6,7 +6,7 @@ function App() {
   return (
     <div className="App">
       <Header></Header>
-      <MovieCard movieTitle="Grown Ups" rating="5.0" movieArt="./imgs/grownUps.jpg"></MovieCard>
+      <MovieCard movieTitle="Grown Ups" rating="5.0" movieArt=""></MovieCard>
       <button>Load More</button>
     </div>
 
