@@ -3,10 +3,26 @@
   flex-wrap: wrap;
 }
 
+.movie-modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 button {
   display: flex;
   justify-content: center;
   color: white;
   background-color: black;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+button:hover {
+  transform: scale(1.05);
+}
+
+img {
   border-radius: 8px;
 }
