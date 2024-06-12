@@ -8,7 +8,7 @@ function MovieList () {
     useEffect(() => {
         const fetchMovies = async () => {
             try {
-                const response = await fetch('`https://api.themoviedb.org/3/movie/popular?api_key=${process.env.REACT_APP_TMDB_API_KEY}`');
+                const response = await fetch('`https://api.themoviedb.org/3/movie/popular?api_key=${process.env.VITE_APP_TMDB_API_KEY}`');
                 const data = await response.json();
                 setMovies(data.results);
             } catch(errors) {
@@ -40,7 +40,15 @@ function MovieList () {
     
       
     return (
-      <div></div>
+      <div className='movie-list'>
+        <MovieCard movieTitle="Grown Ups" rating="5.0" movieArt={grownupsImage}></MovieCard>
+        <MovieCard movieTitle="Grown Ups" rating="5.0" movieArt={grownupsImage}></MovieCard>
+        <MovieCard movieTitle="Grown Ups" rating="5.0" movieArt={grownupsImage}></MovieCard>
+        <MovieCard movieTitle="Grown Ups" rating="5.0" movieArt={grownupsImage}></MovieCard>
+        <MovieCard movieTitle="Grown Ups" rating="5.0" movieArt={grownupsImage}></MovieCard>
+        <MovieCard movieTitle="Grown Ups" rating="5.0" movieArt={grownupsImage}></MovieCard>
+        <MovieCard movieTitle="Grown Ups" rating="5.0" movieArt={grownupsImage}></MovieCard>
+      </div>
 
     )
 }
