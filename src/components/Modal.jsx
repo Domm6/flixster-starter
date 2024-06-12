@@ -1,5 +1,7 @@
 import "./Modal.css"
 
+
+
 function Modal (props) {
     return (
         <div className="modal">
@@ -11,7 +13,7 @@ function Modal (props) {
                     <p><span className="bold-text">Overview:</span> {props.overview}</p>
                     <p><span className="bold-text">Genres:</span> {props.genre}</p>
                 </div>
-                <button className="modal-button">Close</button>
+                <button className="modal-button" onClick={props.onClose}>Close</button>
             </div>
         </div>
     )
