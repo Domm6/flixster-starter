@@ -7,6 +7,8 @@ import grownupsImage from './assets/grownups.jpg';
 
 
 function App() {
+
+
   return (
     <div className="App">
       <Header></Header>
