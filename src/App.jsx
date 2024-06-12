@@ -22,7 +22,9 @@ function App() {
   return (
     <div className="App">
       <Header></Header>
-      <MovieList></MovieList>
+      <div className='movie-cards'>
+        <MovieList></MovieList>
+      </div>
       <button>Load More</button>
       <div className='movie-modal'>
         <Modal movieTitle="Grown Ups" releaseDate="11/04/2003" overview="A movie about a old grown ups who rekindle and live there lives as kids again."

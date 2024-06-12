@@ -1,7 +1,7 @@
-/* .movie-cards {
+.movie-cards {
   display: flex;
   flex-wrap: wrap;
-} */
+}
 
 .movie-modal {
   display: flex;
