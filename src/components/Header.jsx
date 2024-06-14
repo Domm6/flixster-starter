@@ -1,18 +1,22 @@
+import React from 'react';
 import "./Header.css";
-import React, { useState } from "react";
 
-function Header() {
+function Header({ handleSubmit, handleSortChange, searchTerm }) {
   return (
     <div className="header">
-
       <h1>Flixster</h1>
+      <form className="header-form" onSubmit={handleSubmit}>
+        <input htmlFor={searchTerm} name="search" />
+        <button type="submit">Submit</button>
+      </form>
       <form className="filter">
         <label>
-          Movie Type:
-          <select>
-            {/* <option value="1" onClick={hanleChange}>Genres</option> */}
-            <option value="2">Release Date</option>
-            <option value="3">Highest Rating</option>
+          Sort by:
+          <select onChange={handleSortChange} defaultValue="">
+            <option value="">Default</option>
+            <option value="popularity.desc">Popularity Descending</option>
+            <option value="release_date.desc">Release Date Descending</option>
+            <option value="vote_average.desc">Rating Descending</option>
           </select>
         </label>
       </form>
