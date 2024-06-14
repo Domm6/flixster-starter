@@ -12,6 +12,7 @@ function App() {
   const [searchTerm, setSearchTerm] = useState('');
   const [currPage, setCurrPage] = useState(1);
   const [sortOption, setSortOption] = useState('');
+  const[trailer, setTrailer] = useState('');
 
   const openModal = async (movieId) => {
     const options = {
@@ -23,9 +24,22 @@ function App() {
     };
 
     try {
-      const response = await fetch(`https://api.themoviedb.org/3/movie/${movieId}?language=en-US`, options);
+      const response = await fetch(`https://api.themoviedb.org/3/movie/${movieId}?append_to_response=videos&language=en-US`, options);
       const currMovie = await response.json();
       setCurrMovie(currMovie);
+      console.log();
+
+      // get trailer info
+      let trailerInfo = currMovie.videos.results.find(video => video.type === "Trailer" && video.official === true);
+
+      if (trailerInfo) {
+        let trailerKey = trailerInfo.key;
+        setTrailer(`https://www.youtube.com/embed/${trailerKey}`);
+      } else {
+        console.log("No official trailer found");
+        setTrailer(''); 
+      }
+
     } catch(errors) {
       console.error("Error fetching movies:", errors);
     }
@@ -91,7 +105,7 @@ function App() {
     };
 
     fetchMovies();
-  }, [searchTerm, currPage, sortOption]);
+  }, [searchTerm, currPage, sortOption]); // if any of these changes, refresh
 
   return (
     <div className="App">
@@ -107,6 +121,7 @@ function App() {
             overview={currMovie.overview}
             genre={currMovie.genres}
             movieArt={currMovie.poster_path} 
+            trailerUrl={trailer}
             onClose={closeModal} 
           />
         )}
