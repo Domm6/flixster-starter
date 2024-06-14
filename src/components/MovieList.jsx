@@ -13,6 +13,8 @@ function MovieList ({openModal}) {
       const form = event.target;
       const fData = new FormData(form);
       setSearchTerm(fData.get('search'))
+      setCurrPage(1);
+      setMovies([]);
     }
 
     function loadMore() {
@@ -37,7 +39,11 @@ function MovieList ({openModal}) {
         try {
             const response = await fetch(url, options);
             const data = await response.json();
-            setMovies(prevMovies => [...prevMovies, ...data.results]);
+            setMovies(prevMovies => {
+              const movieSet = new Set(prevMovies.map(movie => movie.id));
+              const newMovies = data.results.filter(movie => !movieSet.has(movie.id));
+              return [...prevMovies, ...newMovies];
+            });
         } catch(errors) {
             console.error("Error fetching moives:", errors);
         }
