@@ -1,17 +1,35 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import Header from './components/Header';
-import MovieCard from './components/MovieCard';
 import MovieList from './components/MovieList';
 import Footer from './components/Footer';
 import Modal from './components/Modal';
-import grownupsImage from './assets/grownups.jpg';
-
 
 function App() {
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const [currMovie, setCurrMovie] = useState(0);
+  const [movies, setMovies] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [currPage, setCurrPage] = useState(1);
+  const [sortOption, setSortOption] = useState('');
 
-  const openModal = () => {
+  const openModal = async (movieId) => {
+    const options = {
+      method: 'GET',
+      headers: {
+        accept: 'application/json',
+        Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkZTdkMDQ1NjQ1MWQ4MjAzN2JkYjViZDZjOTIyYjkxMyIsInN1YiI6IjY2NjdkNjM5NjljZjhmN2ZiMDg1YmY0YiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.IHp2bMxcshTEp8GwPeQxuJsldao0ym5L1KVgBnTdhY4'
+      }
+    };
+
+    try {
+      const response = await fetch(`https://api.themoviedb.org/3/movie/${movieId}?language=en-US`, options);
+      const currMovie = await response.json();
+      setCurrMovie(currMovie);
+    } catch(errors) {
+      console.error("Error fetching movies:", errors);
+    }
+
     setIsModalVisible(true);
   };
 
@@ -19,24 +37,84 @@ function App() {
     setIsModalVisible(false);
   };
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const fData = new FormData(form);
+    setSearchTerm(fData.get('search'));
+    setCurrPage(1);
+    setMovies([]);
+  };
+
+  const handleSortChange = (event) => {
+    const selectedSortOption = event.target.value || ''; // Set to null for default
+    setSortOption(selectedSortOption);
+    setCurrPage(1);
+    setMovies([]);
+  };
+
+  const loadMore = () => {
+    setCurrPage(currPage + 1);
+  };
+
+  useEffect(() => {
+    const fetchMovies = async () => {
+      let url;
+      if (searchTerm) {
+        url = `https://api.themoviedb.org/3/search/movie?query=${searchTerm}&include_adult=false&language=en-US&page=${currPage}`;
+      } else {
+        url = `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=${currPage}`;
+      }
+      if (sortOption) {
+        url += `&sort_by=${sortOption}`;
+      }
+
+      const options = {
+        method: 'GET',
+        headers: {
+          accept: 'application/json',
+          Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkZTdkMDQ1NjQ1MWQ4MjAzN2JkYjViZDZjOTIyYjkxMyIsInN1YiI6IjY2NjdkNjM5NjljZjhmN2ZiMDg1YmY0YiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.IHp2bMxcshTEp8GwPeQxuJsldao0ym5L1KVgBnTdhY4'
+        }
+      };
+
+      try {
+        const response = await fetch(url, options);
+        const data = await response.json();
+        setMovies(prevMovies => {
+          const movieSet = new Set(prevMovies.map(movie => movie.id));
+          const newMovies = data.results.filter(movie => !movieSet.has(movie.id));
+          return [...prevMovies, ...newMovies];
+        });
+      } catch(errors) {
+        console.error("Error fetching movies:", errors);
+      }
+    };
+
+    fetchMovies();
+  }, [searchTerm, currPage, sortOption]);
+
   return (
     <div className="App">
-      <Header></Header>
+      <Header handleSubmit={handleSubmit} handleSortChange={handleSortChange} searchTerm={searchTerm} />
       <div className='movie-cards'>
-        <MovieList></MovieList>
+        <MovieList movies={movies} loadMore={loadMore} openModal={openModal} />
       </div>
-      <button>Load More</button>
       <div className='movie-modal'>
-        <Modal movieTitle="Grown Ups" releaseDate="11/04/2003" overview="A movie about a old grown ups who rekindle and live there lives as kids again."
-        genre="Comedy" movieArt={grownupsImage}></Modal>
-        
+        {isModalVisible && (
+          <Modal 
+            movieTitle={currMovie.original_title} 
+            releaseDate={currMovie.release_date} 
+            overview={currMovie.overview}
+            genre={currMovie.genres}
+            movieArt={currMovie.poster_path} 
+            onClose={closeModal} 
+          />
+        )}
       </div>
       <div className='app-footer'>
-        <Footer></Footer>
+        <Footer />
       </div>
-
     </div>
-
   );
 }
 

@@ -1,21 +1,21 @@
 import "./Modal.css"
 
 
-
 function Modal (props) {
     return (
         <div className="modal">
             <div className="modal-content">
-                <h3>{props.movieTitle}</h3>
-                <img src={props.movieArt} alt="" />
-                <div className="modal-text">
+                <div className="modal-header">
+                    <h3>{props.movieTitle}</h3>                </div>
+                <img src={`https://image.tmdb.org/t/p/w500/${props.movieArt}`} alt="" className="movie-img"/>                <div className="modal-text">
                     <p><span className="bold-text">Release Date:</span> {props.releaseDate}</p>
                     <p><span className="bold-text">Overview:</span> {props.overview}</p>
-                    <p><span className="bold-text">Genres:</span> {props.genre}</p>
+                    <p><span className="bold-text">Genres:</span> {props.genre?.map(genre => genre.name).join(', ')}</p>
                 </div>
                 <button className="modal-button" onClick={props.onClose}>Close</button>
             </div>
         </div>
+
     )
 }
 
