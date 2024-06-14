@@ -69,4 +69,4 @@ Add your response here
 
 ### Shout out
 
-Give a shout out to somebody from your cohort that especially helped you during your project. This can be a fellow peer, instructor, TA, mentor, etc.
+I would like to shoutout the instructors and my classmates. In specific, Marvin was super helpful and helped me debug my code in reagards to the serach feature.
