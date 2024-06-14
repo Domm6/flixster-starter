@@ -13,6 +13,7 @@ function App() {
   const [currPage, setCurrPage] = useState(1);
   const [sortOption, setSortOption] = useState('');
   const[trailer, setTrailer] = useState('');
+  const[genres, setGenres] = useState([])
 
   const openModal = async (movieId) => {
     const options = {
@@ -27,8 +28,6 @@ function App() {
       const response = await fetch(`https://api.themoviedb.org/3/movie/${movieId}?append_to_response=videos&language=en-US`, options);
       const currMovie = await response.json();
       setCurrMovie(currMovie);
-      console.log();
-
       // get trailer info
       let trailerInfo = currMovie.videos.results.find(video => video.type === "Trailer" && video.official === true);
 
@@ -122,6 +121,7 @@ function App() {
             genre={currMovie.genres}
             movieArt={currMovie.poster_path} 
             trailerUrl={trailer}
+            runtime={currMovie.runtime}
             onClose={closeModal} 
           />
         )}

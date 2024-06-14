@@ -1,3 +1,7 @@
+.App {
+  font-family: Verdana, Geneva, sans-serif;
+}
+
 .movie-cards {
   display: flex;
   justify-content: center;
@@ -22,6 +26,8 @@ button {
 
 button:hover {
   transform: scale(1.05);
+  background-color: white;
+  color: black;
 }
 
 .load-button {
