@@ -17,7 +17,7 @@ function MovieList({ movies, loadMore, openModal }) {
           />
         ))}
       </div>
-      <button onClick={loadMore}>Load More</button>
+      <button className='load-button' onClick={loadMore}>Load More</button>
     </>
   );
 }

@@ -35,6 +35,16 @@
     align-items: center;
 }
 
+.text-bottom {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.text-bottom img {
+    width: 30px;
+}
+
 .movie-img {
     width: 200px;
     border-radius: 8px;

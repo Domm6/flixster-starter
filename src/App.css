@@ -1,5 +1,6 @@
 .movie-cards {
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
 }
 
@@ -21,6 +22,12 @@ button {
 
 button:hover {
   transform: scale(1.05);
+}
+
+.load-button {
+  padding: 30px;
+  margin: 30px;
+  width: 40%;
 }
 
 img {

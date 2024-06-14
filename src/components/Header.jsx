@@ -6,8 +6,8 @@ function Header({ handleSubmit, handleSortChange, searchTerm }) {
     <div className="header">
       <h1>Flixster</h1>
       <form className="header-form" onSubmit={handleSubmit}>
-        <input htmlFor={searchTerm} name="search" />
-        <button type="submit">Submit</button>
+        <input htmlFor={searchTerm} name="search" className='search-bar'/>
+        <button type="submit" className='search-button'>Submit</button>
       </form>
       <form className="filter">
         <label>
