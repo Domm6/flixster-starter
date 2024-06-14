@@ -5,7 +5,6 @@ import MovieCard from './components/MovieCard';
 import MovieList from './components/MovieList';
 import Footer from './components/Footer';
 import Modal from './components/Modal';
-import grownupsImage from './assets/grownups.jpg';
 
 
 function App() {
@@ -51,8 +50,7 @@ function App() {
       <div className='movie-cards'>
         <MovieList openModal={openModal}></MovieList>
       </div>
-      <button onClick={loadMoreMovies}>Load More</button>
-      <div className='movie-modal'>
+\      <div className='movie-modal'>
         {isModalVisible && (
           <Modal 
           movieTitle={currMovie.original_title} 
@@ -73,3 +71,6 @@ function App() {
 }
 
 export default App;
+
+
+//onClick={loadMoreMovies}

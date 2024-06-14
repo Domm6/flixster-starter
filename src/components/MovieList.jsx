@@ -15,19 +15,16 @@ function MovieList ({openModal}) {
       setSearchTerm(fData.get('search'))
     }
 
-    function loadMoreMovies() {
-      const newPage = currentPage + 1;
-      setCurrPage(newPage);
-      fetchMovies(newPage);
-
+    function loadMore() {
+      setCurrPage(currPage + 1);
     }
 
 
 
     useEffect(() => {
       const fetchMovies = async () => {
-        const baseUrl = 'https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1';
-        const searchUrl = `https://api.themoviedb.org/3/search/movie?query=${searchTerm}&include_adult=false&language=en-US&page=1`
+        const baseUrl = `https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=${currPage}`;
+        const searchUrl = `https://api.themoviedb.org/3/search/movie?query=${searchTerm}&include_adult=false&language=en-US&page=${currPage}`
         const url = searchTerm ? searchUrl : baseUrl
         const options = {
           method: 'GET',
@@ -40,14 +37,14 @@ function MovieList ({openModal}) {
         try {
             const response = await fetch(url, options);
             const data = await response.json();
-            setMovies(prevMovies => [...prevMovies,...data.results]);
+            setMovies(prevMovies => [...prevMovies, ...data.results]);
         } catch(errors) {
             console.error("Error fetching moives:", errors);
         }
       };
       
       fetchMovies();
-    }, [searchTerm]);
+    }, [searchTerm, currPage]);
 
       
     return (
@@ -85,6 +82,10 @@ function MovieList ({openModal}) {
 
         })};
       </div>
+
+      <button onClick={loadMore}>Load More</button>
+
+
       </>
 
     )
