@@ -26,7 +26,6 @@ function MovieCard(props) {
     return (
         <div className="movie-card" onClick={() => props.openModal(props.id)}>
             <img src={posterUrl} alt={`${props.movieTitle} poster`} className="movie-img" />
-            <div>
                 <div className="movie-card-text">
                     <h3>{props.movieTitle}</h3>
                     <div className="text-bottom">
@@ -45,7 +44,6 @@ function MovieCard(props) {
                         />
                     </div>
                 </div>
-            </div>
         </div>
     );
 }
