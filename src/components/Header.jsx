@@ -1,24 +1,23 @@
-import "./Header.css"
+import "./Header.css";
+import React, { useState } from "react";
 
 function Header() {
-    return(
+  return (
+    <div className="header">
 
-        <div className="header">
-            <form action="" className="header-form">
-                <input type="text" />
-                <button type="submit">Submit</button>
-            </form>
-            <h1>Flixster</h1>
-            <form action="">
-                <label for="movies">Sort by:</label>
-                <select name="header-sort" id="">
-
-                </select>
-            </form>
-
-        </div>
-
-    )
+      <h1>Flixster</h1>
+      <form className="filter">
+        <label>
+          Movie Type:
+          <select>
+            {/* <option value="1" onClick={hanleChange}>Genres</option> */}
+            <option value="2">Release Date</option>
+            <option value="3">Highest Rating</option>
+          </select>
+        </label>
+      </form>
+    </div>
+  );
 }
 
-export default Header
+export default Header;

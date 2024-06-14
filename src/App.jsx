@@ -10,9 +10,35 @@ import grownupsImage from './assets/grownups.jpg';
 
 function App() {
   const [isModalVisible, setIsModalVisible] = useState(false);
+  // currentMovie
+  const [currMovie, setCurrMovie] = useState(0);
 
-  const openModal = () => {
+
+  const openModal = async (movieId) => {
+    // api call
+    const url = 'https://api.themoviedb.org/3/movie/653346?language=en-US';
+    const options = {
+      method: 'GET',
+      headers: {
+        accept: 'application/json',
+        Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkZTdkMDQ1NjQ1MWQ4MjAzN2JkYjViZDZjOTIyYjkxMyIsInN1YiI6IjY2NjdkNjM5NjljZjhmN2ZiMDg1YmY0YiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.IHp2bMxcshTEp8GwPeQxuJsldao0ym5L1KVgBnTdhY4'
+      }
+    };
+
+    try {
+      const response = fetch(`https://api.themoviedb.org/3/movie/${movieId}?language=en-US`, options)
+      .then(response => response.json())
+      .then(currMovie => {
+        setCurrMovie(currMovie);
+        console.log(currMovie)
+      })
+    } catch(errors) {
+      console.error("Error fetching moives:", errors);
+    }
+
     setIsModalVisible(true);
+    console.log(movieId);
+    
   };
 
   const closeModal = () => {
@@ -23,13 +49,19 @@ function App() {
     <div className="App">
       <Header></Header>
       <div className='movie-cards'>
-        <MovieList></MovieList>
+        <MovieList openModal={openModal}></MovieList>
       </div>
-      <button>Load More</button>
+      <button onClick={loadMoreMovies}>Load More</button>
       <div className='movie-modal'>
-        <Modal movieTitle="Grown Ups" releaseDate="11/04/2003" overview="A movie about a old grown ups who rekindle and live there lives as kids again."
-        genre="Comedy" movieArt={grownupsImage}></Modal>
-        
+        {isModalVisible && (
+          <Modal 
+          movieTitle={currMovie.original_title} 
+          releaseDate={currMovie.release_date} 
+          overview={currMovie.overview}
+          genre={currMovie.genres}
+          movieArt={currMovie.poster_path} 
+          onClose={closeModal}></Modal>
+        )}
       </div>
       <div className='app-footer'>
         <Footer></Footer>
