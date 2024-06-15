@@ -7,6 +7,20 @@
     background-color: #ADD8E6;
 }
 
+.filter {
+    background-color: white;
+    border-radius: 8px;
+    padding: 5px;
+}
+
+.filter-select {
+    padding: 5px;
+    border-radius: 8px;
+    border: none;
+}
+
+
+
 .header-body {
     display: flex;
     align-items: center;

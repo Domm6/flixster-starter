@@ -12,11 +12,10 @@ function Header({ handleSubmit, handleSortChange, searchTerm }) {
           <input htmlFor={searchTerm} name="search" className='search-bar' placeholder='Search for a movie...'/>
           <button type="submit" className='search-button'>Submit</button>
         </form>
-        {/* <TemporaryDrawer></TemporaryDrawer> */}
         <form className="filter">
           <label>
             Sort by:
-            <select onChange={handleSortChange} defaultValue="">
+            <select onChange={handleSortChange} defaultValue="" className='filter-select'>
               <option value="">Now Playing</option>
               <option value="popularity.desc">Popularity Descending</option>
               <option value="release_date.desc">Release Date Descending</option>
