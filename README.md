@@ -31,8 +31,8 @@ Deployed Application: [Flixster Deployed Site](https://flixster-starter-zzj1.onr
 
 #### STRETCH FEATURES
 
-- [ ] **Deployment**
-  - [ ] Website is deployed via Render.
+- [X] **Deployment**
+  - [X] Website is deployed via Render.
 - [X] **Embedded Movie Trailers**
   - [X] Within the popup displaying a movie's details, users can play the movie trailer.
 - [X] **Watched Checkbox**
