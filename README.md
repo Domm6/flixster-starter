@@ -59,19 +59,19 @@ Deployed Application: [Flixster Deployed Site](https://flixster-starter-zzj1.onr
 
 * Did the topics discussed in your labs prepare you to complete the assignment? Be specific, which features in your weekly assignment did you feel unprepared to complete?
 
-The labs provided great insight into how to complete the project and acted as example as to how I could add features into my project.
+The labs provided great insight into how to complete the project and acted as example as to how I could add features into my project. I feel like it would have been useful to spend more time discussing how useState and useEffect work. Additionally, I would have liked a deeper explanation on how to pass data to multiple different files.
 
 * If you had more time, what would you have done differently? Would you have added additional features? Changed the way your project responded to a particular event, etc.
 
-If I had more time, I would have focused more on the user interface and used an overall more cohesive design. This could include using more similar colors and things of that sense.
+If I had more time, I would have focused more on the user interface and used an overall more cohesive design. I would have also tried to add and incorporate the side bar as well. I also noticed that the api had a lot of interesting calls, so exploring those more and seeing what other features I coudl come up with based on that functionality would have been cool as well!
   
 * Reflect on your project demo, what went well? Were there things that maybe didn't go as planned? Did you notice something that your peer did that you would like to try next time?
 
-Add your response here
+Reflecting on my project demo, it went about the way I expected. I noticed that some of my peers were able to incorporate the sidebar and I think that would be a cool feature I could have added with more time. I also liked a lot of the cool animations and styling that some of them were able to include.
 
 ### Open-source libraries used
 
-- Add any links to open-source libraries used in your project.
+N/A
 
 ### Shout out
 
