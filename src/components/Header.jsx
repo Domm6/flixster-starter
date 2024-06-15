@@ -16,7 +16,7 @@ function Header({ handleSubmit, handleSortChange, searchTerm }) {
         <form className="filter">
           <label>
             Sort by:
-            <select onChange={handleSortChange} defaultValue="">
+            <select onChange={handleSortChange} defaultValue="" className='filter-select'>
               <option value="">Now Playing</option>
               <option value="popularity.desc">Popularity Descending</option>
               <option value="release_date.desc">Release Date Descending</option>

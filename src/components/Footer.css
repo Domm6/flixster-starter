@@ -1,7 +1,31 @@
 .footer {
     display: flex;
-    justify-content: end;
+    justify-content: space-around;
     background-color: #ADD8E6;
-    padding: 15px;
+    padding: 30px;
     margin-top: 15px;
+}
+
+.footer-right {
+    display: flex;
+    flex-direction: column;
+    line-height: 30px;
+}
+
+.footer-right a:link, .footer-right a:visited {
+    color: #000000; /* Black color for normal and visited links */
+    text-decoration: none; /* Removes underline */
+}
+
+.footer-right a:hover {
+    color: #555555; /* Dark gray color on hover */
+    text-decoration: underline; /* Adds underline on hover */
+}
+
+.footer-right a:active {
+    color: #333333; /* Darker gray color when the link is being clicked */
+}
+
+.footer-left {
+
 }
