@@ -12,7 +12,6 @@ function Header({ handleSubmit, handleSortChange, searchTerm }) {
           <input htmlFor={searchTerm} name="search" className='search-bar' placeholder='Search for a movie...'/>
           <button type="submit" className='search-button'>Submit</button>
         </form>
-        {/* <TemporaryDrawer></TemporaryDrawer> */}
         <form className="filter">
           <label>
             Sort by:
